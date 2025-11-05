@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataMart - Premium Dataset Marketplace</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>📊 DataMart</h1>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="#" onclick="showPage('home')">Home</a>
+                <a href="#" onclick="showPage('datasets')" id="datasetsLink" style="display:none;">Datasets</a>
+                <a href="#" onclick="showPage('purchases')" id="purchasesLink" style="display:none;">My Purchases</a>
+                <a href="#" onclick="logout()" id="logoutLink" style="display:none;">Logout</a>
+                <a href="#" onclick="showPage('login')" id="loginLink">Login</a>
+                <a href="#" onclick="showPage('signup')" id="signupLink">Sign Up</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="homePage" class="page active">
+        <div class="hero">
+            <div class="container">
+                <h1>Welcome to DataMart</h1>
+                <p>Access premium datasets with custom filtering and pay only for what you need</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="showPage('signup')">Get Started</button>
+                    <button class="btn btn-secondary" onclick="showPage('login')">Login</button>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="features">
+                <div class="feature-card">
+                    <h3>🎯 Custom Filtering</h3>
+                    <p>Filter datasets by multiple criteria to get exactly what you need</p>
+                </div>
+                <div class="feature-card">
+                    <h3>💰 Pay Per Row</h3>
+                    <p>Only pay for the data you download - $0.05 per row</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📥 Instant Download</h3>
+                    <p>Get your filtered CSV instantly after payment</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Page -->
+    <div id="loginPage" class="page">
+        <div class="container">
+            <div class="auth-container">
+                <h2>Login to DataMart</h2>
+                <form id="loginForm" onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="loginEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="loginPassword" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+                    <p class="auth-switch">Don't have an account? <a href="#" onclick="showPage('signup')">Sign Up</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signup Page -->
+    <div id="signupPage" class="page">
+        <div class="container">
+            <div class="auth-container">
+                <h2>Create Account</h2>
+                <form id="signupForm" onsubmit="handleSignup(event)">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" id="signupName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="signupEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="signupPassword" required minlength="6">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+                    <p class="auth-switch">Already have an account? <a href="#" onclick="showPage('login')">Login</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Datasets Page -->
+    <div id="datasetsPage" class="page">
+        <div class="container">
+            <h2>Available Datasets</h2>
+            <div class="datasets-grid" id="datasetsGrid"></div>
+        </div>
+    </div>
+
+    <!-- Dataset Detail Page -->
+    <div id="datasetDetailPage" class="page">
+        <div class="container">
+            <button class="btn btn-secondary" onclick="showPage('datasets')">← Back to Datasets</button>
+            <div id="datasetDetailContent"></div>
+        </div>
+    </div>
+
+    <!-- Purchases Page -->
+    <div id="purchasesPage" class="page">
+        <div class="container">
+            <h2>My Purchases</h2>
+            <div id="purchasesList"></div>
+        </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closePaymentModal()">&times;</span>
+            <h2>Complete Payment</h2>
+            <div id="paymentDetails"></div>
+            <div class="payment-form">
+                <h3>Payment Information</h3>
+                <form id="paymentForm" onsubmit="handlePayment(event)">
+                    <div class="form-group">
+                        <label>Card Number</label>
+                        <input type="text" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Expiry Date</label>
+                            <input type="text" placeholder="MM/YY" maxlength="5" required>
+                        </div>
+                        <div class="form-group">
+                            <label>CVV</label>
+                            <input type="text" placeholder="123" maxlength="3" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Pay Now</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
