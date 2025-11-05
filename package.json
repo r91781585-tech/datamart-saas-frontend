@@ -1,0 +1,20 @@
+{
+  "name": "datamart-saas-frontend",
+  "version": "1.0.0",
+  "description": "Mini SaaS platform for purchasing and downloading filtered dataset rows",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server -p 8000 -o",
+    "dev": "npx http-server -p 8000 -o"
+  },
+  "keywords": [
+    "saas",
+    "dataset",
+    "marketplace",
+    "data",
+    "csv",
+    "frontend"
+  ],
+  "author": "",
+  "license": "MIT"
+}
